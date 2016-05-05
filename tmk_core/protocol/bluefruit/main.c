@@ -45,16 +45,16 @@ int main(void)
 
     CPU_PRESCALE(0);
 
-    DDRD  = _BV(PD5);
-    DDRB  = _BV(PB0);
+//    DDRD  = _BV(PD5);
+//    DDRB  = _BV(PB0);
     
-    PORTD = _BV(PD5);
-    PORTB = _BV(PB0);
+//    PORTD = _BV(PD5);
+//    PORTB = _BV(PB0);
 
     print_set_sendchar(sendchar);
 
-    usb_init();
-    _delay_ms(2000);
+//    usb_init();
+//    _delay_ms(2000);
     // while (!usb_configured()) /* wait */
 
     dprintf("Initializing keyboard...\n");
@@ -64,14 +64,14 @@ int main(void)
     // is not configured, choose the Bluefruit, otherwise use USB
     // Definitely would prefer to have this driven by an input pin and make
     // it switch dynamically - BCG
-    if (!usb_configured()) {
+/*    if (!usb_configured()) {
     
         // Send power to Bluefruit... Adafruit says it takes 27 mA, I think
         // the pins should provide 40 mA, but just in case I switch the 
         // Bluefruit using a transistor - BCG
         DDRB   = _BV(PB6);
         PORTB |= _BV(PB6);
-    
+*/    
         dprintf("Setting host driver to bluefruit...\n");
         host_set_driver(bluefruit_driver());
 
@@ -82,12 +82,13 @@ int main(void)
         // to load drivers and do whatever it does to actually
         // be ready for input
         _delay_ms(1000);
-        PORTD = ~_BV(PD5);
+
+//        PORTD = ~_BV(PD5);
         dprintf("Starting main loop");
         while (1) {
             keyboard_task();
         }
-
+/*
     } else {
 
         // I'm not smart enough to get this done with LUFA - BCG
@@ -112,5 +113,5 @@ int main(void)
             keyboard_task(); 
         }
     }
-
+*/
 }
