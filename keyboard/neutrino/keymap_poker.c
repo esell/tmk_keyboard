@@ -4,7 +4,7 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /* 0: qwerty */
     KEYMAP(ESC,  1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC, INS, \
            TAB,  Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS, DELETE, \
-           LCTL, A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,ENT, HOME, \
+           FN1, A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,ENT, HOME, \
            LSFT, Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,RSFT, UP, END, \
            LCTL, LGUI, LALT,            SPC,                     PGUP,PGDOWN, FN0, LEFT, DOWN, RGHT),
     /* 1: FN 1 */
@@ -17,4 +17,5 @@ const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 const uint16_t PROGMEM fn_actions[] = {
     [0] = ACTION_LAYER_MOMENTARY(1),
+    [1] = ACTION_MODS_TAP_KEY(MOD_LCTL, KC_ESC),
 };
